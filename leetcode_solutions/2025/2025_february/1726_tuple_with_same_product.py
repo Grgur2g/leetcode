@@ -2,22 +2,21 @@ class Solution:
     def tupleSameProduct(self, nums: List[int]) -> int:
         arr= []
         for i in range(len(nums)):
-            for j in range(len(nums)):
-                if i==j:
-                    continue
+            for j in range(i+1,len(nums)):
                 arr.append(nums[i]*nums[j])
         from collections import Counter
         cnt = Counter(arr)
         suma = 0
-        for key, value in cnt.items():
+        for _ , value in cnt.items():
             curr = 0
-            if value >=4:
-                curr = value//2
+            if value >=2:
+                curr = value
                 curr = (curr * (curr-1)) // 2
                 curr *= 8
             suma+= curr
             
         return int(suma)
+        
         
 
 
